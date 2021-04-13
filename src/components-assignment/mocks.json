@@ -1,39 +1,39 @@
 {
   "lists": [
     {
-      "id": "1",
-      "header": "First list",
-      "cardIds": [ "a", "b", "e", "f", "g", "j", "l", "m" ]
+      "listId":   "1",
+      "header":   "First list",
+      "hasCards": [ "a", "b", "e", "f", "g", "j", "l", "m" ]
     },
     {
-      "id": "2",
-      "header": "Second list",
-      "cardIds": ["b", "c", "d", "f", "h", "i", "k"]
+      "listId":   "2",
+      "header":   "Second list",
+      "hasCards": ["b", "c", "d", "f", "h", "i", "k"]
     },
     {
-      "id": "3",
-      "header": "Third list",
-      "cardIds": [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m" ]
+      "listId":   "3",
+      "header":   "Third list",
+      "hasCards": [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m" ]
     },
     {
-      "id": "4",
-      "header": "Fourth list",
-      "cardIds": [ "l", "m" ]
+      "listId":   "4",
+      "header":   "Fourth list",
+      "hasCards": [ "l", "m" ]
     }
   ],
   "allCards": {
-    "a": { "listId": "a", "title": "First card", "content": "lorem ipsum" },
-    "b": { "listId": "b", "title": "Second card", "content": "lorem ipsum" },
-    "c": { "listId": "c", "title": "Third card", "content": "lorem ipsum" },
-    "d": { "listId": "d", "title": "Fourth card", "content": "lorem ipsum" },
-    "e": { "listId": "e", "title": "Fifth card", "content": "lorem ipsum" },
-    "f": { "listId": "f", "title": "Sixth card", "content": "lorem ipsum" },
-    "g": { "listId": "g", "title": "Seventh card", "content": "lorem ipsum" },
-    "h": { "listId": "h", "title": "Eighth card", "content": "lorem ipsum" },
-    "i": { "listId": "i", "title": "Ninth card", "content": "lorem ipsum" },
-    "j": { "listId": "j", "title": "Tenth card", "content": "lorem ipsum" },
-    "k": { "listId": "k", "title": "Eleventh card", "content": "lorem ipsum" },
-    "l": { "listId": "l", "title": "Twelfth card", "content": "lorem ipsum" },
-    "m": { "listId": "m", "title": "Thirteenth card", "content": "lorem ipsum" }
+    "a": { "cardId": "a", "title": "First card",      "content": "lorem ipsum" },
+    "b": { "cardId": "b", "title": "Second card",     "content": "lorem ipsum" },
+    "c": { "cardId": "c", "title": "Third card",      "content": "lorem ipsum" },
+    "d": { "cardId": "d", "title": "Fourth card",     "content": "lorem ipsum" },
+    "e": { "cardId": "e", "title": "Fifth card",      "content": "lorem ipsum" },
+    "f": { "cardId": "f", "title": "Sixth card",      "content": "lorem ipsum" },
+    "g": { "cardId": "g", "title": "Seventh card",    "content": "lorem ipsum" },
+    "h": { "cardId": "h", "title": "Eighth card",     "content": "lorem ipsum" },
+    "i": { "cardId": "i", "title": "Ninth card",      "content": "lorem ipsum" },
+    "j": { "cardId": "j", "title": "Tenth card",      "content": "lorem ipsum" },
+    "k": { "cardId": "k", "title": "Eleventh card",   "content": "lorem ipsum" },
+    "l": { "cardId": "l", "title": "Twelfth card",    "content": "lorem ipsum" },
+    "m": { "cardId": "m", "title": "Thirteenth card", "content": "lorem ipsum" }
   }
 }

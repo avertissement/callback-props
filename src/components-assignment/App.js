@@ -11,16 +11,17 @@ class App extends React.Component {
   listTitle() {
     return (
       this.state.lists.map(list => {
-        const { cardIds, header, listId } = list;
-        const cards = cardIds.map(card => {
+        const { hasCards, header, listId } = list;
+        const cards = hasCards.map(card => {
           return this.state.allCards[card];
         });
         return (
           <List
-            cards={cards}
             handleAdd={this.handleAdd}
             handleDelete={this.handleDelete}
+            hasCards={cards}
             key={listId}
+            listId={listId}
             title={header}
           />
         )
@@ -33,19 +34,20 @@ class App extends React.Component {
   }
 
   handleDelete = (card) => {
-    const firstMatch = this.state.storeIntermediate.lists[0].cardIds.filter(id => id === card)[0]
-    const secondMatch = this.state.storeIntermediate.lists[1].cardIds.filter(id => id === card)[0]
-    const thirdMatch = this.state.storeIntermediate.lists[2].cardIds.filter(id => id === card)[0]
-    const fourthMatch = this.state.storeIntermediate.lists[3].cardIds.filter(id => id === card)[0]
+    console.log(card);
+    // const firstMatch = this.state.storeIntermediate.lists[0].cardIds.filter(id => id === card)[0]
+    // const secondMatch = this.state.storeIntermediate.lists[1].cardIds.filter(id => id === card)[0]
+    // const thirdMatch = this.state.storeIntermediate.lists[2].cardIds.filter(id => id === card)[0]
+    // const fourthMatch = this.state.storeIntermediate.lists[3].cardIds.filter(id => id === card)[0]
 
-    const localState = Object.assign({}, this.state.storeIntermediate, {
-        ...this.state.storeIntermediate.lists[0], 
-        cardIds: filtering
-    })
-    console.log(localState)
-    this.setState({
-        storeIntermediate: localState
-    })
+    // const localState = Object.assign({}, this.state.storeIntermediate, {
+    //     ...this.state.storeIntermediate.lists[0], 
+    //     cardIds: filtering
+    // })
+    // console.log(localState)
+    // this.setState({
+    //     storeIntermediate: localState
+    // })
 
   }
 
