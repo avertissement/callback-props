@@ -33,8 +33,8 @@ class App extends React.Component {
     console.log('clicked! - added', {poss})
   }
 
-  handleDelete = (card) => {
-    console.log(card);
+  handleDelete = (cardId, ListId) => {
+    console.log(cardId, ListId);
     // const firstMatch = this.state.storeIntermediate.lists[0].cardIds.filter(id => id === card)[0]
     // const secondMatch = this.state.storeIntermediate.lists[1].cardIds.filter(id => id === card)[0]
     // const thirdMatch = this.state.storeIntermediate.lists[2].cardIds.filter(id => id === card)[0]

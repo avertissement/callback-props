@@ -7,9 +7,10 @@ function List({ handleAdd, handleDelete, hasCards, listId, title }) {
     const {cardId, content, title } = card;
     return (
       <Card
+        belongsTo={listId}
+        cardId={cardId}
         content={content}
         handleDelete={handleDelete}
-        id={cardId}
         key={cardId}
         title={title} 
       />
