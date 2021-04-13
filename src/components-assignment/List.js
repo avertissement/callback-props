@@ -1,34 +1,39 @@
 import React from 'react';
-import './List.css';
 import Card from './Card.js';
+import './List.css';
 
-function List(props) {
-
-    const intermediate = props.cards.map(card => {
-        const cardContent = card.content
-        const cardTitle = card.title
-        const cardThisID = card.id
-        return (
-            <Card pseudo={cardThisID} key={cardThisID} title={cardTitle} content={cardContent} deleteClicking={props.deleteClicking} />
-        )
-    })
-
+function List({ cards, handleAdd, handleDelete, title }) {
+  const intermediate = cards.map(card => {
+    const {content, id, title } = card;
     return (
-        <section className="List">
-
-
-            <header className="List-header">
-                <h2>{props.header}</h2>
-            </header>
-
-            <div className="List-cards">
-                {intermediate}
-            <button type="button" className="List-add-button" onClick={() => props.addingClicking(props.header)}> + Add Random Card</button>
-            </div>
-
-
-        </section>
+      <Card
+        content={content}
+        handleDelete={handleDelete}
+        id={id}
+        key={id}
+        title={title} 
+      />
     )
+  })
+
+  return (
+    <section className="List">
+
+      <header className="List-header">
+        <h2>{title}</h2>
+      </header>
+
+      <div className="List-cards">
+        {intermediate}
+        <button
+          className="List-add-button"
+          onClick={() => handleAdd(title)}
+          type="button">
+            + Add Random Card
+        </button>
+      </div>
+    </section>
+  )
 }
 
-export default List
+export default List;
