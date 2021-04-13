@@ -32,44 +32,21 @@ class App extends React.Component {
     console.log('clicked! - added', {poss})
   }
 
-  handleDelete = (pseudo) => {
-    const firstMatch = this.state.storeIntermediate.lists[0].cardIds.filter(id => id === pseudo)[0]
-    const secondMatch = this.state.storeIntermediate.lists[1].cardIds.filter(id => id === pseudo)[0]
-    const thirdMatch = this.state.storeIntermediate.lists[2].cardIds.filter(id => id === pseudo)[0]
-    const fourthMatch = this.state.storeIntermediate.lists[3].cardIds.filter(id => id === pseudo)[0]
-    let filtering
-    if(pseudo === firstMatch) {
-      filtering = this.state.storeIntermediate.lists[0].cardIds.filter(item => item !== pseudo)
-      const localState = Object.assign({}, this.state.storeIntermediate, {
-          ...this.state.storeIntermediate.lists[0], 
-          cardIds: filtering
-      })
-      console.log(localState)
-      this.setState({
-          storeIntermediate: localState
-      })
-    }
-    else if(pseudo === secondMatch) {
-      // filtering = this.state.storeIntermediate.lists[1].cardIds.filter(item => item !== pseudo)
-      // this.setState({
-            
-      // })
-      alert('COOL!')
-    }
-    else if(pseudo === thirdMatch) {
-      // filtering = this.state.storeIntermediate.lists[2].cardIds.filter(item => item !== pseudo)
-      // this.setState({
-            
-      // })
-      alert('COOL!')
-    }
-    else if(pseudo === fourthMatch) {
-      // filtering = this.state.storeIntermediate.lists[3].cardIds.filter(item => item !== pseudo)
-      // this.setState({
-            
-      // })
-      alert('COOL!')
-    }
+  handleDelete = (card) => {
+    const firstMatch = this.state.storeIntermediate.lists[0].cardIds.filter(id => id === card)[0]
+    const secondMatch = this.state.storeIntermediate.lists[1].cardIds.filter(id => id === card)[0]
+    const thirdMatch = this.state.storeIntermediate.lists[2].cardIds.filter(id => id === card)[0]
+    const fourthMatch = this.state.storeIntermediate.lists[3].cardIds.filter(id => id === card)[0]
+
+    const localState = Object.assign({}, this.state.storeIntermediate, {
+        ...this.state.storeIntermediate.lists[0], 
+        cardIds: filtering
+    })
+    console.log(localState)
+    this.setState({
+        storeIntermediate: localState
+    })
+
   }
 
   render() {
