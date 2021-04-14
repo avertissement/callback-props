@@ -33,21 +33,18 @@ class App extends React.Component {
     console.log('clicked! - added', {poss})
   }
 
-  handleDelete = (cardId, ListId) => {
-    console.log(cardId, ListId);
-    // const firstMatch = this.state.storeIntermediate.lists[0].cardIds.filter(id => id === card)[0]
-    // const secondMatch = this.state.storeIntermediate.lists[1].cardIds.filter(id => id === card)[0]
-    // const thirdMatch = this.state.storeIntermediate.lists[2].cardIds.filter(id => id === card)[0]
-    // const fourthMatch = this.state.storeIntermediate.lists[3].cardIds.filter(id => id === card)[0]
-
-    // const localState = Object.assign({}, this.state.storeIntermediate, {
-    //     ...this.state.storeIntermediate.lists[0], 
-    //     cardIds: filtering
-    // })
-    // console.log(localState)
-    // this.setState({
-    //     storeIntermediate: localState
-    // })
+  handleDelete = (cardId, listId) => {
+    const matchedList = this.state.lists.find(list => list.listId === listId);
+    const filteredHasCards = matchedList.hasCards.filter(card => card !== cardId);
+    const updatedSingleList = Object.assign({}, matchedList, {
+      ...matchedList,
+      hasCards: filteredHasCards
+    });
+    this.setState(prevState => ({
+      lists: prevState.lists.map((list, index) => {
+        return index === listId - 1 ? updatedSingleList : list
+      })
+    }));
 
   }
 
@@ -65,4 +62,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default App;
