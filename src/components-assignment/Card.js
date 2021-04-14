@@ -2,15 +2,21 @@ import React from 'react';
 import './Card.css';
 
 function Card(props) {
-    const title1 = <h3>{props.title}</h3>
-    const content1 = <p>{props.content}</p>
-    return (
-        <div className="Card">
-            <button type="button" onClick={() => props.deleteClicking(props.pseudo)}>delete</button>
-            {props.title ? title1 : null}
-            {props.content ? content1 : null}
-        </div>
-    )
+  const { belongsTo, cardId, content, handleDelete, title } = props;
+  const contentHTML = <p>{content}</p>;
+  const titleHTML   = <h3>{title}</h3>;
+
+  return (
+    <div className="Card">
+      <button
+        onClick={() => handleDelete(cardId, belongsTo)}
+        type="button">
+          delete
+      </button>
+      {title && titleHTML}
+      {content && contentHTML}
+    </div>
+  )
 }
 
-export default Card
+export default Card;
