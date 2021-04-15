@@ -6,45 +6,7 @@ import data from './mocks.json';
 
 class App extends React.Component {
 
-  state = {
-    "lists": [
-      {
-        "listId":   "1",
-        "header":   "First list",
-        "hasCards": [ "a", "b", "e", "f", "g", "j", "l", "m" ]
-      },
-      {
-        "listId":   "2",
-        "header":   "Second list",
-        "hasCards": ["b", "c", "d", "f", "h", "i", "k"]
-      },
-      {
-        "listId":   "3",
-        "header":   "Third list",
-        "hasCards": [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m" ]
-      },
-      {
-        "listId":   "4",
-        "header":   "Fourth list",
-        "hasCards": [ "l", "m" ]
-      }
-    ],
-    "allCards": {
-      "a": { "cardId": "a", "title": "First card",      "content": "lorem ipsum" },
-      "b": { "cardId": "b", "title": "Second card",     "content": "lorem ipsum" },
-      "c": { "cardId": "c", "title": "Third card",      "content": "lorem ipsum" },
-      "d": { "cardId": "d", "title": "Fourth card",     "content": "lorem ipsum" },
-      "e": { "cardId": "e", "title": "Fifth card",      "content": "lorem ipsum" },
-      "f": { "cardId": "f", "title": "Sixth card",      "content": "lorem ipsum" },
-      "g": { "cardId": "g", "title": "Seventh card",    "content": "lorem ipsum" },
-      "h": { "cardId": "h", "title": "Eighth card",     "content": "lorem ipsum" },
-      "i": { "cardId": "i", "title": "Ninth card",      "content": "lorem ipsum" },
-      "j": { "cardId": "j", "title": "Tenth card",      "content": "lorem ipsum" },
-      "k": { "cardId": "k", "title": "Eleventh card",   "content": "lorem ipsum" },
-      "l": { "cardId": "l", "title": "Twelfth card",    "content": "lorem ipsum" },
-      "m": { "cardId": "m", "title": "Thirteenth card", "content": "lorem ipsum" }
-    }
-  }
+  state = data;
 
   listTitle() {
     return (
@@ -67,11 +29,22 @@ class App extends React.Component {
     )
   }
 
+  getTargetCard = cardId => {
+    let targetCard = null;
+    this.state.lists.forEach(list => {
+      for(let i=0; i<list.hasCards.length; i++) {
+        if(list.hasCards[i].length > 0 && list.hasCards[i] === cardId) targetCard = list.hasCards[i];
+        if(list.hasCards[i].length === 0 || !cardId) console.error('ERROR: Unknonwn Id');
+      }
+    });
+    return targetCard;
+  }
+
   handleAdd = (listId) => {
     const id = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
     const newRandomCard = () => {
       return {
-        id,
+        cardId: id,
         title: `Random Card ${id}`,
         content: 'lorem ipsum',
       }
@@ -86,28 +59,21 @@ class App extends React.Component {
   }
 
   handleDelete = (cardId, listId) => {
+    const targetId = this.getTargetCard(cardId);
     const matchedList = this.state.lists.find(list => list.listId === listId);
-    const filteredHasCards = matchedList.hasCards.filter(card => card !== cardId);
-    const updatedSingleList = Object.assign({}, matchedList, {
+    const filteredHasCards = matchedList.hasCards.filter(card => card !== targetId);
+    const updatedMatchedList = Object.assign({}, matchedList, {
       ...matchedList,
       hasCards: filteredHasCards
     });
-    this.setState(prevState => {
-      let targetID;
-      return {
-        lists: prevState.lists.map((list, index) => {
-          for(let i=0; i<list.hasCards.length; i++) {
-            if(list.hasCards[i].length > 1) {
-              targetID = list.hasCards[i]
-            } else {
-              targetID = listId - 1
-            }
-          }
-          return cardId === targetID ? updatedSingleList : list
-        })
-      }
-    });
+    const listToReplaceIndex = listId - 1;
+    this.setState(prevState => ({
+      lists: prevState.lists.map((list, index) => {
+        return index === listToReplaceIndex ? updatedMatchedList : list;
+      })
+    }));
   }
+
 
   render() {
     return (
