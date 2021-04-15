@@ -4,7 +4,8 @@ import './List.css';
 
 function List({ handleAdd, handleDelete, hasCards, listId, title }) {
   const intermediate = hasCards.map(card => {
-    const {cardId, content, title } = card;
+    const { cardId, content, title } = card;
+    console.log('inside list', cardId)
     return (
       <Card
         belongsTo={listId}
@@ -28,7 +29,7 @@ function List({ handleAdd, handleDelete, hasCards, listId, title }) {
         {intermediate}
         <button
           className="List-add-button"
-          onClick={() => handleAdd(title)}
+          onClick={() => handleAdd(listId)}
           type="button">
             + Add Random Card
         </button>
