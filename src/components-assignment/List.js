@@ -3,7 +3,7 @@ import Card from './Card.js';
 import './List.css';
 
 function List({ handleAdd, handleDelete, hasCards, listId, title }) {
-  const intermediate = hasCards.map(card => {
+  const intermediate = hasCards.map((card, index) => {
     const { cardId, content, title } = card;
     console.log('inside list', cardId)
     return (
@@ -12,7 +12,7 @@ function List({ handleAdd, handleDelete, hasCards, listId, title }) {
         cardId={cardId}
         content={content}
         handleDelete={handleDelete}
-        key={cardId}
+        key={`${cardId}-${index}`}
         title={title} 
       />
     )
