@@ -5,7 +5,6 @@ import './List.css';
 function List({ handleAdd, handleDelete, hasCards, listId, title }) {
   const intermediate = hasCards.map((card, index) => {
     const { cardId, content, title } = card;
-    console.log('inside list', cardId)
     return (
       <Card
         belongsTo={listId}

@@ -49,8 +49,10 @@ class App extends React.Component {
   listTitle() {
     return (
       this.state.lists.map(list => {
+        console.log('the list', list);
         const { hasCards, header, listId } = list;
         const cards = hasCards.map(card => {
+          console.log('blah', card);
           return this.state.allCards[card];
         });
         return (
@@ -71,7 +73,7 @@ class App extends React.Component {
     const id = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4);
     const newRandomCard = () => {
       return {
-        id,
+        cardId: id,
         title: `Random Card ${id}`,
         content: 'lorem ipsum',
       }
@@ -82,10 +84,11 @@ class App extends React.Component {
     this.setState({
       ...gettingList,
       hasCards: newListHasCards
-    })
+    }, ()=> console.log(this.state))
   }
 
   handleDelete = (cardId, listId) => {
+    console.log(cardId, listId);
     const matchedList = this.state.lists.find(list => list.listId === listId);
     const filteredHasCards = matchedList.hasCards.filter(card => card !== cardId);
     const updatedSingleList = Object.assign({}, matchedList, {
